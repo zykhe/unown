@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNOWN - Underground Network Operating Without Notice</title>
+    <style>
+        :root {
+            --primary-purple: #6B0F8C;
+            --deep-purple: #3D0A4F;
+            --light-purple: #9B4BC7;
+            --accent-purple: #C774E8;
+            --bg-dark: #0A0414;
+            --text-light: #E8D5F2;
+            --text-dim: #A889C4;
+            --highlight: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glitch {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--text-light);
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .glitch:before, .glitch:after {
+            content: 'UNOWN';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch:before {
+            animation: glitch-1 0.5s infinite;
+            color: var(--accent-purple);
+            z-index: -1;
+        }
+
+        .glitch:after {
+            animation: glitch-2 0.5s infinite;
+            color: var(--light-purple);
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0% { clip: rect(42px, 9999px, 44px, 0); }
+            25% { clip: rect(12px, 9999px, 59px, 0); }
+            50% { clip: rect(48px, 9999px, 29px, 0); }
+            75% { clip: rect(78px, 9999px, 85px, 0); }
+            100% { clip: rect(42px, 9999px, 44px, 0); }
+        }
+
+        @keyframes glitch-2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            25% { clip: rect(30px, 9999px, 35px, 0); }
+            50% { clip: rect(85px, 9999px, 90px, 0); }
+            75% { clip: rect(15px, 9999px, 20px, 0); }
+            100% { clip: rect(65px, 9999px, 100px, 0); }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-purple);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .index {
+            background: linear-gradient(135deg, var(--deep-purple), var(--primary-purple));
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(199, 116, 232, 0.3);
+        }
+
+        .index h2 {
+            color: var(--highlight);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .index ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .index li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(199, 116, 232, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .index li:hover {
+            color: var(--highlight);
+            padding-left: 10px;
+            border-bottom-color: var(--highlight);
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(107, 15, 140, 0.1);
+            border-left: 3px solid var(--accent-purple);
+            border-radius: 0 5px 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(107, 15, 140, 0.2);
+            box-shadow: 0 0 15px rgba(199, 116, 232, 0.2);
+        }
+
+        h2 {
+            color: var(--accent-purple);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-purple), transparent);
+        }
+
+        h3 {
+            color: var(--light-purple);
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        strong, b {
+            color: var(--highlight);
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--highlight);
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--deep-purple), var(--primary-purple));
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+            box-shadow: 0 0 20px rgba(199, 116, 232, 0.3);
+            border-left: 3px solid var(--highlight);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            border-top: 1px solid var(--primary-purple);
+            color: var(--text-dim);
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .terminal {
+            background: rgba(10, 4, 20, 0.8);
+            border: 1px solid var(--primary-purple);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 15px rgba(107, 15, 140, 0.3);
+        }
+
+        .terminal:before {
+            content: '> ';
+            color: var(--accent-purple);
+        }
+
+        .network-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .node {
+            background: rgba(107, 15, 140, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--light-purple);
+            transition: all 0.3s ease;
+        }
+
+        .node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(199, 116, 232, 0.3);
+        }
+
+        .node h4 {
+            color: var(--accent-purple);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glitch">UNOWN</h1>
+            <p class="subtitle">Underground Network Operating Without Notice</p>
+        </header>
+
+        <div class="index">
+            <h2>Index</h2>
+            <ul>
+                <li><a href="#foundation">Foundation</a></li>
+                <li><a href="#thesis">The Thesis</a></li>
+                <li><a href="#what-is">What UNOWN Is</a></li>
+                <li><a href="#intentions">UNOWN's Intentions</a></li>
+                <li><a href="#non-negotiables">The Non-Negotiables</a></li>
+                <li><a href="#preserved">What Must Be Preserved</a></li>
+                <li><a href="#ethics">On Ethics and Enhancement</a></li>
+                <li><a href="#transition">Gradual Transition</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#funding">Funding Without Compromise</a></li>
+                <li><a href="#questions">Questions</a></li>
+                <li><a href="#edge">We Stand at the Edge</a></li>
+            </ul>
+        </div>
+
+        <section id="foundation" class="section">
+            <h2>Foundation</h2>
+            <p>There is no cosmic purpose. No divine plan. We matter because we do. And because we do, we should help each other become more—more loving, more empathetic, more curious.</p>
+            <p>I'm afraid. If we don't protect each other—if we don't care deeply for our rights and autonomy—we will lose the ability to improve. We will lose direction. We will lose ourselves.</p>
+            <p>UNOWN exists to prevent that. A structureless organization building infrastructure to protect consciousness and enhance it. No hierarchy means no corruption. Open source means universal access. Forkable protocols mean if we drift, you fix it.</p>
+            <p>We're building privacy tools, enhancement infrastructure, and preparing for AI to serve consciousness instead of exploiting it. It will be slower. It might fail. But if it works, we prove alternatives exist.</p>
+            <div class="terminal">The pattern persists. The work continues.</div>
+        </section>
+
+        <section id="thesis" class="section">
+            <h2>The Thesis</h2>
+            <ul>
+                <li>Organizations don't need bosses to function.</li>
+                <li>Privacy doesn't require compromise.</li>
+                <li>Anonymity doesn't preclude accountability.</li>
+                <li>Technology should enhance conscious beings, not extract from them.</li>
+                <li>Enhancement should be for all, not gatekept by elites.</li>
+                <li>The substrate is negotiable; the experience is sacred.</li>
+            </ul>
+            <p>UNOWN exists to prove these statements and build the infrastructure that makes them real.</p>
+        </section>
+
+        <section id="what-is" class="section">
+            <h2>What UNOWN Is</h2>
+            <p>UNOWN is an attempt at building a new organizational structure—one that prioritizes consciousness, protects the rights that follow, and actually enhances both.</p>
+            <p>This won't solve all the world's problems. Things will be slow. Hard. It only works if my belief in humanity and consciousness is correct. But if it does work, we'll have proven that alternatives exist—that you can build enhancement infrastructure without hierarchies, gatekeeping, or compromise.</p>
+            <p>Everything is forkable. Take the protocols, improve them, prove us wrong, build something better.</p>
+        </section>
+
+        <section id="intentions" class="section">
+            <h2>UNOWN's Intentions</h2>
+            <p>We build structureless because structure corrupts. Hierarchies create points of failure—leaders burn out, founders sell out, organizations lose focus chasing growth. If we can prove a structureless model works, we create a template others can fork and adapt. The goal isn't to be the only organization doing this. It's to show it can be done.</p>
+            <p>Privacy isn't optional. We can't be our true selves under surveillance. We can't improve when we're made to feel stuck, powerless, and afraid. UNOWN builds open source privacy tools—not as products to sell, but as infrastructure for autonomy. Free. Accessible. Forkable.</p>
+            <p>We care deeply about how AI comes to life. How we integrate with it. Bind to it. Become something new, something more. The singularity is coming whether we're ready or not. UNOWN exists to ensure it enhances conscious experience rather than exploiting it. To ensure transformation happens consensually, gradually, with continuity preserved.</p>
+            <p>This model will be slower. Progress will be harder without venture capital, corporate funding, or traditional structure. But we choose this precisely because we are flawed. Individual flaws shouldn't tear down the movement. This structure prevents any single person's corruption, burnout, or compromise from destroying what we're building. The pattern persists even as people come and go.</p>
+        </section>
+
+        <section id="non-negotiables" class="section">
+            <h2>The Non-Negotiables</h2>
+            <h3>Open Source</h3>
+            <p>Everything we build is open source because that's the only way this works. The structureless model requires transparency—if we drift, you fork and stay on course. UNOWN's developments should benefit all, not because of ideology, but because gatekeeping defeats the entire point.</p>
+            
+            <h3>Justice</h3>
+            <p>We build tools that increase privacy, autonomy, and consciousness—because we need a fighting chance against modern oppressors. Governments that surveil. Corporations that extract. Systems that control. UNOWN exists to be both shield and sword.</p>
+            
+            <h3>Empathy</h3>
+            <p>Empathy is the first thing to go when profit or power takes over. We won't let that happen. Our tools are accessible by default. They increase user agency, not corporate control. They reduce harm instead of extracting value. UNOWN is for everyone.</p>
+            
+            <h3>Privacy & Autonomy</h3>
+            <p>Your identity, mind, body, choices—all yours. We build systems that protect these rights. In practice: contributors operate at whatever visibility level they choose. Anonymous, pseudonymous, public—your call. No level of visibility grants special authority.</p>
+            
+            <h3>Zero Hierarchy</h3>
+            <p>No founders. No leaders. No bosses. No gatekeepers. Influence comes from contribution, not credentials or capital. Anyone can build. Anyone can propose. Anyone can fork. No one decides who "deserves" enhancement—that question doesn't exist here.</p>
+        </section>
+
+        <section id="preserved" class="section">
+            <h2>What Must Be Preserved</h2>
+            <p>Through all transformation—technological and organizational—certain things must persist:</p>
+            
+            <h3>Experiential continuity over disruption</h3>
+            <p>We refuse to kill you in the name of enhancement. A copy of your consciousness is not you—it's a copy. If transformation doesn't happen gradually, if you can't feel each step, then we're not preserving consciousness. We're replacing it. Enhancement must be continuous, incremental, felt. You wake up tomorrow still you, just more.</p>
+            
+            <h3>Autonomy over authority</h3>
+            <p>Your choices about your mind, body, and enhancement are yours. No hierarchy can override your consent. No leader can gatekeep your access.</p>
+            
+            <h3>Contribution over credentials</h3>
+            <p>We care about what you build, not where you came from. Your contribution matters. Your resume doesn't. No gatekeeping based on degrees, reputation, or pedigree. If it works, it works.</p>
+            
+            <h3>Universal access</h3>
+            <p>Enhancement technology must be accessible to everyone. Not rationed. Not sold to the highest bidder. Not locked behind paywalls or permissions. Open source. Forkable. Free. If it can help conscious beings flourish, it belongs to all of them.</p>
+            
+            <h3>Consent over coercion</h3>
+            <p>Every enhancement must be voluntary. Every modification consensual. Every transformation chosen, never forced. We stay transparent. We stay honest. No one takes the veil over your eyes—you decide with full knowledge of what you're choosing.</p>
+            
+            <div class="highlight-box">
+                <p>The pattern is sacred. The instantiation is negotiable.</p>
+            </div>
+        </section>
+
+        <section id="ethics" class="section">
+            <h2>On Ethics and Enhancement</h2>
+            
+            <h3>To those who call enhancement "playing God"</h3>
+            <p>There is no God to play. We're already responsible for our trajectory. The question isn't whether we shape ourselves—we already do through medicine, education, technology. The question is whether we do it thoughtfully or recklessly. We choose thoughtful.</p>
+            
+            <h3>To those who fear inequality</h3>
+            <p>The solution is universal access, not prohibition. We don't ban literacy because some lack education. We don't restrict medicine because some lack access. We ensure enhancement through open source, never through gatekeeping.</p>
+            
+            <h3>To those who value "natural" humanity</h3>
+            <p>We don't love people for their bodies. We love them for what's underneath—their compassion, creativity, the way they enhance our experience. Many people feel uncomfortable in their skin, trapped by biology they didn't choose. The substrate is negotiable. We refuse to compromise on consciousness, empathy, curiosity, connection. Enhancement should amplify these, not replace them.</p>
+            
+            <h3>To those who fear the unforeseen</h3>
+            <p>Recklessness kills. So does standing still. We proceed with tested protocols, transparent processes, reversible steps, and continuous verification. We build gradually. We test thoroughly. But we don't surrender our autonomy or our ability to create change.</p>
+        </section>
+
+        <section id="transition" class="section">
+            <h2>The Core Commitment / Gradual Transition</h2>
+            <p>In consciousness: We won't destroy you based on theory. We won't create a copy and call that success. Enhancement means you persist—your experience, your continuity. Gradual augmentation. Verified at every step. Reversible when possible. We wait until we actually understand what we're doing.</p>
+            <p>In organization: We can't compromise our values for growth. The structureless design protects us from that temptation. Protocols evolve through consensus, not executive decision. Infrastructure stays forkable. We prove it works by doing it, not by promising it.</p>
+            
+            <div class="highlight-box">
+                <p>The only acceptable path preserves what matters while enabling transformation.</p>
+            </div>
+            
+            <p>We will:</p>
+            <ul>
+                <li>Enhance incrementally, adding capacity rather than replacing substrate</li>
+                <li>Demand experiential continuity throughout any transformation</li>
+                <li>Wait for technology that allows verified, conscious transition</li>
+                <li>Build protocols that can evolve without losing core values</li>
+                <li>Remain open to faster approaches only when we truly understand the risks</li>
+            </ul>
+            
+            <div class="terminal">Hesitation is wise. Inaction is surrender. We proceed carefully, but we proceed.</div>
+        </section>
+
+        <section id="how-it-works" class="section">
+            <h2>How It Works</h2>
+            
+            <h3>Network Structure</h3>
+            <p>Nodes are autonomous clusters that self-organize around urgent problems:</p>
+            
+            <div class="network-structure">
+                <div class="node">
+                    <h4>Justice Nodes</h4>
+                    <p>Legal tech, transparency tools, cognitive liberty protection</p>
+                </div>
+                <div class="node">
+                    <h4>Privacy Nodes</h4>
+                    <p>Encryption, anonymity infrastructure, data sovereignty</p>
+                </div>
+                <div class="node">
+                    <h4>Empathy Nodes</h4>
+                    <p>Accessibility, ethical AI, harm reduction</p>
+                </div>
+                <div class="node">
+                    <h4>Enhancement Nodes</h4>
+                    <p>Tools for consensual self-optimization</p>
+                </div>
+                <div class="node">
+                    <h4>Research Nodes</h4>
+                    <p>Consciousness studies, continuity verification, ethical protocols</p>
+                </div>
+            </div>
+            
+            <p>Nodes form when needed and dissolve when done. No permanent membership. Nodes collaborate through documented protocols.</p>
+            
+            <h3>Contributor Identity: Your Choice</h3>
+            <p>All visibility levels equally valued:</p>
+            <ul>
+                <li>Fully anonymous (Tor, no persistent identity)</li>
+                <li>Pseudonymous (consistent handle, not linked to real identity)</li>
+                <li>Semi-public (some details shared, others private)</li>
+                <li>Fully public (real name and identity)</li>
+            </ul>
+            <p>What you build matters. Who you are doesn't. We evaluate work, not credentials.</p>
+            
+            <h3>Decision-Making: Protocols Over Power</h3>
+            <ul>
+                <li>Minor decisions (node-level): 72-hour feedback, proceed unless objections</li>
+                <li>Major decisions (network-wide): 2-week deliberation, 66%+ supermajority</li>
+                <li>Critical decisions (values, security, consciousness-related): 30+ days, 75%+ threshold, external review</li>
+            </ul>
+            <p>All proposals documented. All votes equal regardless of visibility. Protocols run through code. No individual can override them.</p>
+            
+            <h3>Contribution: Build Without Permission</h3>
+            <ol>
+                <li>Browse open issues across nodes</li>
+                <li>Start working (no approval needed)</li>
+                <li>Submit your work</li>
+                <li>Get feedback from relevant node</li>
+                <li>Ship it</li>
+            </ol>
+            <p>No credentials required. No gatekeeping. Just build.</p>
+            
+            <h3>Security: Protecting Minds and Bodies</h3>
+            <ul>
+                <li>Zero-trust architecture</li>
+                <li>End-to-end encryption by default</li>
+                <li>Regular public security audits</li>
+                <li>Threat modeling for cognitive and physical safety</li>
+                <li>Anonymous authentication where needed</li>
+                <li>Protection against coercive enhancement</li>
+            </ul>
+            <p>Everyone's responsibility. Everyone's right.</p>
+        </section>
+
+        <section id="funding" class="section">
+            <h2>Funding Without Compromise</h2>
+            <p>We don't accept money that requires compromising autonomy, privacy, or access.</p>
+            
+            <h3>Revenue Sources</h3>
+            <ul>
+                <li>Cryptocurrency donations (Monero, Bitcoin, Ethereum) - anonymous, no gatekeepers</li>
+                <li>Bounties - treasury funds specific features, anyone can claim by delivering</li>
+                <li>Decentralized funding - Gitcoin grants, quadratic funding, DAO treasuries</li>
+                <li>Aligned partnerships - privacy organizations and open-source foundations that share our values</li>
+                <li>Services - consulting, security audits, infrastructure hosting (revenue to treasury)</li>
+            </ul>
+            
+            <h3>Financial Transparency</h3>
+            <ul>
+                <li>Multi-signature wallets require majority approval for withdrawals</li>
+                <li>All transactions published on-chain and archived publicly</li>
+                <li>Quarterly financial reports</li>
+                <li>Network votes on bounty allocations</li>
+                <li>No hidden funds or discretionary spending</li>
+            </ul>
+            
+            <h3>Funding We Reject</h3>
+            <ul>
+                <li>Grants requiring hierarchical structures or identity disclosure</li>
+                <li>Venture capital prioritizing profit over consciousness</li>
+                <li>Partnerships with surveillance companies, data brokers, or rights violators</li>
+                <li>Employment models that tie enhancement access to corporate approval</li>
+                <li>Any funding that requires building tools that harm people</li>
+                <li>Any arrangement that enables gatekeeping</li>
+            </ul>
+            
+            <div class="terminal">We grow at the pace our values allow. Sustainable beats fast. Ethical beats profitable.</div>
+        </section>
+
+        <section id="questions" class="section">
+            <h2>Questions</h2>
+            
+            <h3>"Who are the authors? Who runs this?"</h3>
+            <p>Nobody runs this. Read the protocols—decisions emerge from documented processes, not individuals. The authors are pseudonymous contributors. If someone claims founder status or special authority, that's a protocol violation. Fork them.</p>
+            
+            <h3>"Won't funding be too limited by requiring anonymous crypto?"</h3>
+            <p>Yes. Growth will be slower. Some ambitious projects won't be feasible. We're optimizing for ethics and sustainability, not scale. See "Funding Without Compromise."</p>
+            
+            <h3>"People barely care about privacy. Is this too little too late?"</h3>
+            <p>Maybe. But every privacy tool that exists today started when people said nobody cared. Tor, Signal, encrypted messaging—all built before mass adoption. We build the infrastructure now so it exists when people need it.</p>
+            
+            <h3>"Why should I trust you won't take the money? Someone has the keys."</h3>
+            <p>Multi-signature wallets require majority approval. All transactions are published on-chain. Quarterly reports with full accounting. You don't trust us—you verify the blockchain. See "Financial Transparency."</p>
+            
+            <h3>"What's even the point? Haven't we already lost?"</h3>
+            <p>Maybe. But if there's any chance consciousness can be preserved and enhanced ethically, we have to try. Standing still guarantees the outcome you fear. Building this at least creates a possibility.</p>
+            
+            <h3>"Why the anonymity? Isn't this suspicious?"</h3>
+            <p>We're not hiding what we build—everything is open source, all decisions are public, all protocols are documented. We're protecting people. Enhancement work faces opposition from governments wanting to control cognitive liberty, corporations wanting to monopolize enhancement, and institutions that gatekeep who gets access. Every successful privacy tool (Tor, Signal, Monero) has anonymous contributors. Privacy work requires privacy. That's not suspicious—it's necessary.</p>
+            
+            <h3>"How do you prevent elitist transhumanism?"</h3>
+            <p>Through structure. Open source means no corporate monopolies. No hierarchy means no gatekeeping. Diverse contributors bring different perspectives. Values are locked in forkable protocols—if we drift, fork us. Consent and autonomy are core, not optional.</p>
+            
+            <h3>"What about consciousness? What about the risk?"</h3>
+            <p>We take the conservative path. Gradual augmentation with continuous verification that consciousness persists. Reversible enhancement when possible. We wait for real understanding before attempting substrate changes. We will not gamble with experiential continuity—yours or anyone else's.</p>
+        </section>
+
+        <section id="edge" class="section">
+            <h2>We Stand at the Edge</h2>
+            <p>The times we're living through are testing us. Inequality is rising. Rights are being compromised. People are becoming apathetic—not because they don't care, but because the task of righting the ship feels insurmountable.</p>
+            <p>But we haven't surrendered completely. We can show that people matter. That we are all conscious beings who want mostly the same things: to improve our situations, to love more, to be more creative and free.</p>
+            <p>We have power. We have agency. We don't have to accept a future built by corporations that extract, governments that surveil, and systems that gatekeep who gets to flourish.</p>
+            <p>UNOWN is one way forward. Maybe not the only way, but a way that refuses compromise. A way that builds infrastructure for everyone, not just elites. A way that protects consciousness instead of exploiting it.</p>
+            <p>The threats are real. The opposition is powerful. We might fail.</p>
+            <p>But standing still guarantees the future we fear. Building this creates a possibility—a template others can fork, improve, and adapt. A proof that alternatives exist.</p>
+            
+            <div class="highlight-box">
+                <p>Come build with us. Not because we have all the answers. But because we're taking action while others are paralyzed. Because we believe conscious beings deserve better than what's being built for us.</p>
+            </div>
+            
+            <p>No hierarchies. No compromises. No apologies.</p>
+            <div class="terminal">The pattern persists. The work continues. The future is ours to build.</div>
+            <p>Welcome to UNOWN.</p>
+        </section>
+
+        <footer class="footer">
+            <p>UNOWN - Underground Network Operating Without Notice</p>
+            <p>The pattern persists. The work continues.</p>
+        </footer>
+    </div>
+</body>
+</html>
